@@ -15,6 +15,12 @@ export default function TaskList() {
         <View style={styles.container}>
             <ImageBackground source={todayImage} style={styles.background}>
 
+                <View style={styles.IconBar}>
+                    <TouchableOpacity onPress={() => console.log('oi')}>
+                        <Icon name="eye" size={20} color={'#fff'}/>
+                    </TouchableOpacity>
+                </View>
+
                 <View style={styles.titleBar}>
                     <Text style={styles.title}>Hoje</Text>
                     <Text style={styles.subtitle}>{today}</Text>
@@ -28,7 +34,7 @@ export default function TaskList() {
                 activeOpacity={0.7}
                 onPress={() => console.warn("+")}>
 
-                <Icon name="plus" size={20} color={"#000"}/>
+                <Icon name="plus" size={20} color={"#fff"}/>
                 
 
             </TouchableOpacity>
@@ -61,5 +67,22 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginLeft: 20,
         marginBottom: 30
+    },
+    addButton: {
+      position: 'absolute',
+      right: 30,
+      bottom: 30,
+      width: 50,
+      height: 50,
+      borderRadius: 25,
+      backgroundColor: '#B13B44',
+      justifyContent:'center',
+      alignItems:'center'
+    },
+    IconBar:{
+        flexDirection:'row',
+        marginHorizontal: 20,
+        justifyContent: 'flex-end',
+        marginTop: 20
     }
 })
