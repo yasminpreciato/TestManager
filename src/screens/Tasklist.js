@@ -1,11 +1,13 @@
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from "react-native";
 
-import moment from "moment-timezone";
+import moment from "moment-timezone"
 import 'moment/locale/pt-br'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import todayImage from '../../assets/imgs/today.jpg'
+
+import Task from "./components/Task"
 
 export default function TaskList() {
 
@@ -28,7 +30,7 @@ export default function TaskList() {
 
             </ImageBackground>
             <View style={styles.taskList}>
-                <Text>Task #01</Text>
+                <Task />
             </View>
             <TouchableOpacity style={styles.addButton}
                 activeOpacity={0.7}
