@@ -8,37 +8,53 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import todayImage from '../../assets/imgs/today.jpg'
 
 import Task from "./components/Task"
+import { useState } from "react";
+
+const taskDB = [
+    {
+        id: Math.random(),
+        desc: 'Elaborar o MER do TCC',
+        estimateAt: new Date(),
+        doneAt: new Date()
+    },
+    {
+        id: Math.random(),
+        desc: 'Ajustar o FIGMA',
+        estimateAt: new Date(),
+        doneAt: null
+    },
+    {
+        id: Math.random(),
+        desc: 'Revisar a documentação do projeto',
+        estimateAt: new Date(),
+        doneAt: new Date()
+    },
+    {
+        id: Math.random(),
+        desc: 'Organizar o Trello',
+        estimateAt: new Date(),
+        doneAt: null
+    }
+]
 
 export default function TaskList() {
 
     const today = moment().tz("America/Sao_Paulo").locale("pt-br").format('ddd, D [de] MMMM')
 
-    const tasks = [
-        {
-            id: Math.random(),
-            desc: 'Elaborar o MER do TCC',
-            estimateAt: new Date(),
-            doneAt: new Date()
-        },
-        {
-            id: Math.random(),
-            desc: 'Ajustar o FIGMA',
-            estimateAt: new Date(),
-            doneAt: null
-        },
-        {
-            id: Math.random(),
-            desc: 'Revisar a documentação do projeto',
-            estimateAt: new Date(),
-            doneAt: new Date()
-        },
-        {
-            id: Math.random(),
-            desc: 'Organizar o Trello',
-            estimateAt: new Date(),
-            doneAt: null
-        }
-    ]
+    const[tasks, setTasks] = useState([...taskDB])
+
+    const toggleTask = (taskId) => {
+        const taskList = [...tasks]
+        taskList.forEach(task => {
+            if (task.id === taskId) {
+                task.doneAt = task.doneAt ? null : new Date()
+            }
+        })
+
+        
+
+        setTasks([...taskList])
+    }
 
     return(
         <View style={styles.container}>
@@ -56,11 +72,12 @@ export default function TaskList() {
                 </View>
 
             </ImageBackground>
+
             <View style={styles.taskList}>
                 <FlatList 
                     data={tasks}
                     keyExtractor={item => `${item.id}`}
-                    renderItem={({item}) => <Task {...item} />}
+                    renderItem={({item}) => <Task {...item} onToggleTask={toggleTask} />}
                 />
             </View>
 
