@@ -58,7 +58,7 @@ export default function AddTask(props) {
                     <TouchableOpacity onPress={props.onCancel}>
                         <Text style={styles.button}>Cancelar</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={props.onSave({ desc, date })}>
                         <Text style={styles.button}>Salvar</Text>
                     </TouchableOpacity>
                 </View>
