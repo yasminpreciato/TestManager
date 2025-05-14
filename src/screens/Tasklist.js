@@ -83,6 +83,7 @@ export default function TaskList() {
     }
 
     const addTask = newTask => {
+        
         if (!newTask.desc || !newTask.desc.trim()) {
             Alert.alert('Dados inválidos', 'Descrição não informada!')
             return
