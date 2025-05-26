@@ -101,6 +101,11 @@ export default function TaskList() {
         setShowAddTasks(false)
     }
 
+    const deleteTask = id => {
+        const tempTasks = tasks.filter(task => task.id !== id)
+        setTasks(tempTasks)
+    }
+
     return (
         <View style={styles.container}>
 
@@ -128,7 +133,10 @@ export default function TaskList() {
                 <FlatList
                     data={visibleTasks}
                     keyExtractor={item => `${item.id}`}
-                    renderItem={({ item }) => <Task {...item} onToggleTask={toggleTask} />}
+                    renderItem={({ item }) => 
+                    <Task {...item} 
+                    onToggleTask={toggleTask}
+                    onDelete={deleteTask}/>}
                 />
             </View>
 
