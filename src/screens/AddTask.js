@@ -23,7 +23,7 @@ export default function AddTask(props) {
         <Modal transparent={true}
             visible={props.isVisible}
             onRequestClose={props.onCancel}
-            animationType="slide">
+            animationType="fade">
 
             <TouchableWithoutFeedback
                 onPress={props.onCancel}>
