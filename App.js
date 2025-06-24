@@ -1,19 +1,17 @@
-import 'react-native-gesture-handler'; 
-import React from 'react';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import NoteList from "./src/screens/NoteList"; 
-import { StyleSheet } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler"
+import TaskList from "./src/screens/TaskList"
+import { StyleSheet } from "react-native"
 
 export default function App() {
-  return (
+  return(
     <GestureHandlerRootView style={styles.container}>
-      <NoteList />
+      <TaskList />
     </GestureHandlerRootView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1
   }
-});
+})
